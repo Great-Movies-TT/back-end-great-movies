@@ -36,5 +36,6 @@ export class CreateMovieDto {
   releaseDate: Date;
 
   @IsOptional()
+  @IsUrl()
   imageUrl?: string;
 }
