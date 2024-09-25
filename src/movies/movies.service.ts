@@ -15,6 +15,10 @@ export class MoviesService {
     return newMovie.save();
   }
 
+  getTotalCount() {
+    return this.movieModel.estimatedDocumentCount();
+  }
+
   getMovies(
     paginationOptions: { page: number; limit: number },
     genre?: string,

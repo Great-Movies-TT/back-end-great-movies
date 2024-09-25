@@ -38,6 +38,11 @@ export class MoviesController {
     return this.moviesService.getMovies(paginationOptions, genre, minRating);
   }
 
+  @Get('count')
+  async getTotalCount() {
+    return this.moviesService.getTotalCount();
+  }
+
   @Get(':id')
   async getMovieById(@Param('id') id: string) {
     const isValidId = mongoose.Types.ObjectId.isValid(id);
