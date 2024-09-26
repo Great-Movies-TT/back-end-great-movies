@@ -13,6 +13,8 @@
 * Filter by genre and rating;
 * Pagination;
 
+And `Insomnia` for api requests testing;
+
 ## Project setup
 
 ```bash
