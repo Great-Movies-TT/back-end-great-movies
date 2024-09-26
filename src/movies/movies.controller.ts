@@ -41,8 +41,11 @@ export class MoviesController {
   }
 
   @Get('count')
-  async getTotalCount() {
-    return this.moviesService.getTotalCount();
+  async getTotalCount(
+    @Query('genre') genre?: string,
+    @Query('minRating') minRating?: number,
+  ) {
+    return this.moviesService.getTotalCount(genre, minRating);
   }
 
   @Get(':id')

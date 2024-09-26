@@ -15,8 +15,18 @@ export class MoviesService {
     return newMovie.save();
   }
 
-  getTotalCount() {
-    return this.movieModel.estimatedDocumentCount();
+  getTotalCount(genre?: string, minRating?: number) {
+    const query: any = {};
+
+    if (genre) {
+      query.genre = genre;
+    }
+
+    if (minRating !== undefined) {
+      query.rating = { $gte: minRating };
+    }
+
+    return this.movieModel.countDocuments(query).exec();
   }
 
   getMovies(
