@@ -6,6 +6,13 @@
 - class-transformer;
 - class-validator;
 
+# What was implemented
+
+* All CRUD operation: Get, Post, Patch, Delete;
+* Integration with DB;
+* Filter by genre and rating;
+* Pagination;
+
 ## Project setup
 
 ```bash

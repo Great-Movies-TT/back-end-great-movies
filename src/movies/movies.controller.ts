@@ -1,9 +1,11 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
   Get,
   HttpException,
+  NotFoundException,
   Param,
   Patch,
   Post,
@@ -63,14 +65,14 @@ export class MoviesController {
   ) {
     const isValidId = mongoose.Types.ObjectId.isValid(id);
 
-    if (!isValidId) throw new HttpException('Invalid Id', 400);
+    if (!isValidId) throw new BadRequestException('Invalid Id');
 
     const updatedMovie = await this.moviesService.updateMovie(
       id,
       updateMovieDto,
     );
 
-    if (!updatedMovie) throw new HttpException('Movie not found', 404);
+    if (!updatedMovie) throw new NotFoundException('Movie not found');
 
     return updatedMovie;
   }
@@ -79,11 +81,11 @@ export class MoviesController {
   async deleteMovie(@Param('id') id: string) {
     const isValidId = mongoose.Types.ObjectId.isValid(id);
 
-    if (!isValidId) throw new HttpException('Invalid Id', 400);
+    if (!isValidId) throw new BadRequestException('Invalid Id');
 
     const deletedMovie = await this.moviesService.deleteMovie(id);
 
-    if (!deletedMovie) throw new HttpException('Movie not found', 404);
+    if (!deletedMovie) throw new NotFoundException('Movie not found');
 
     return;
   }
