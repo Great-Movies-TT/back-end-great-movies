@@ -6,6 +6,8 @@
 - class-transformer;
 - class-validator;
 
+And `Insomnia` for api requests testing;
+
 ## Project setup
 
 ```bash
