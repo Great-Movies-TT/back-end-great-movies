@@ -5,12 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { MoviesModule } from './movies/movies.module';
 
 @Module({
-  imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://myk01:JH36a9BTZs4ltrye@greatmovies.plued.mongodb.net/great-movies?retryWrites=true&w=majority',
-    ),
-    MoviesModule,
-  ],
+  imports: [MongooseModule.forRoot(process.env.MONGO_URL), MoviesModule],
   controllers: [AppController],
   providers: [AppService],
 })
